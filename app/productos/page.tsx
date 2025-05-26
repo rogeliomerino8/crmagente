@@ -6,121 +6,302 @@ import { Input } from '@/components/ui/input'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table'
-import { Search, Filter, Download, Eye, Edit, Package, TrendingUp, AlertTriangle, CheckCircle, Plus } from 'lucide-react'
+
+import { Search, Filter, Download, Eye, Edit, Package, TrendingUp, AlertTriangle, CheckCircle, Plus, Heart, Star } from 'lucide-react'
 import { SKU } from '@/lib/types'
 import { MainLayout } from '@/components/layout/main-layout'
 
 const productosEjemplo: SKU[] = [
+  // ROYAL SHAVE - Productos de Afeitado
   {
     id: 'SKU-001',
-    codigo: 'DET-PREM-1L',
-    descripcion: 'Detergente Premium Concentrado 1L',
-    categoria: 'Limpieza',
-    precio: 12500,
+    codigo: '7503014279002',
+    descripcion: 'ESPUMA PARA RASURAR PIEL SENSIBLE 200ml',
+    categoria: 'Cuidado Personal',
+    precio: 5300,
     estado: 'activo',
     fechaCreacion: '2024-01-01',
-    stock: 150,
-    imagen: '/productos/detergente-premium.jpg'
+    stock: 156,
+    imagen: '/productos/espuma-rasurar.jpg'
   },
   {
     id: 'SKU-002',
-    codigo: 'SHP-NUT-500ML',
-    descripcion: 'Shampoo Nutritivo con Keratina 500ml',
+    codigo: '7502275700294',
+    descripcion: 'ESPUMA PARA RASURAR MENTOLADA 200ml',
     categoria: 'Cuidado Personal',
-    precio: 15625,
+    precio: 5300,
     estado: 'activo',
     fechaCreacion: '2024-01-01',
     stock: 89,
-    imagen: '/productos/shampoo-nutritivo.jpg'
+    imagen: '/productos/espuma-mentolada.jpg'
   },
   {
     id: 'SKU-003',
-    codigo: 'ACO-REP-400ML',
-    descripcion: 'Acondicionador Reparador Intensivo 400ml',
+    codigo: '7503014279118',
+    descripcion: 'RASTRILLOS DESECH. 2 NAVAJAS EXHIBIDOR MEN 12 par',
     categoria: 'Cuidado Personal',
-    precio: 18000,
+    precio: 12000,
     estado: 'activo',
     fechaCreacion: '2024-01-01',
     stock: 67,
-    imagen: '/productos/acondicionador-reparador.jpg'
+    imagen: '/productos/rastrillos-2-navajas.jpg'
   },
   {
     id: 'SKU-004',
-    codigo: 'JAB-ANT-250ML',
-    descripcion: 'Jabón Antibacterial Líquido 250ml',
-    categoria: 'Higiene',
-    precio: 12500,
+    codigo: '7503014279033',
+    descripcion: 'RASTRILLOS DESECH. 2 NAVAJAS BOLSA MEN 5 pz',
+    categoria: 'Cuidado Personal',
+    precio: 2080,
     estado: 'activo',
     fechaCreacion: '2024-01-01',
     stock: 203,
-    imagen: '/productos/jabon-antibacterial.jpg'
+    imagen: '/productos/rastrillos-bolsa.jpg'
   },
   {
     id: 'SKU-005',
-    codigo: 'SUA-FLO-2L',
-    descripcion: 'Suavizante Floral Concentrado 2L',
-    categoria: 'Limpieza',
-    precio: 14700,
+    codigo: '7502275701758',
+    descripcion: 'RASTRILLOS DESECH. 3 NAVAJAS BOLSA MEN 1 pz',
+    categoria: 'Cuidado Personal',
+    precio: 1500,
     estado: 'activo',
     fechaCreacion: '2024-01-01',
     stock: 45,
-    imagen: '/productos/suavizante-floral.jpg'
+    imagen: '/productos/rastrillos-3-navajas.jpg'
   },
   {
     id: 'SKU-006',
-    codigo: 'CRE-COR-300ML',
-    descripcion: 'Crema Corporal Hidratante 300ml',
+    codigo: '7502275700287',
+    descripcion: 'RASTRILLOS DESECH. 4 NAVAJAS BOLSA MEN 1 pz',
     categoria: 'Cuidado Personal',
-    precio: 13600,
-    estado: 'inactivo',
+    precio: 3750,
+    estado: 'activo',
     fechaCreacion: '2024-01-01',
     stock: 12,
-    imagen: '/productos/crema-corporal.jpg'
+    imagen: '/productos/rastrillos-4-navajas.jpg'
   },
   {
     id: 'SKU-007',
-    codigo: 'GEL-ANT-500ML',
-    descripcion: 'Gel Antibacterial con Aloe Vera 500ml',
-    categoria: 'Higiene',
-    precio: 11000,
+    codigo: '7503014279149',
+    descripcion: 'RASTRILLOS DESECH. 2 NAVAJAS EXHIBIDOR WOMAN 12 par',
+    categoria: 'Cuidado Personal',
+    precio: 12000,
     estado: 'activo',
     fechaCreacion: '2024-01-01',
     stock: 178,
-    imagen: '/productos/gel-antibacterial.jpg'
+    imagen: '/productos/rastrillos-woman.jpg'
   },
+  
+  // COTTONI - Productos de Algodón y Aplicadores
   {
     id: 'SKU-008',
-    codigo: 'MAS-FAC-50ML',
-    descripcion: 'Mascarilla Facial Purificante 50ml',
-    categoria: 'Cuidado Personal',
-    precio: 22000,
-    estado: 'descontinuado',
-    fechaCreacion: '2024-01-01',
-    stock: 0,
-    imagen: '/productos/mascarilla-facial.jpg'
-  },
-  {
-    id: 'SKU-009',
-    codigo: 'DES-AMB-400ML',
-    descripcion: 'Desinfectante Ambiental Citrus 400ml',
-    categoria: 'Limpieza',
-    precio: 9800,
+    codigo: '7502275700423',
+    descripcion: 'APLICADORES BOLSA 20 PZ BAMBÚ ALGODÓN BLANCO',
+    categoria: 'Higiene',
+    precio: 6600,
     estado: 'activo',
     fechaCreacion: '2024-01-01',
     stock: 95,
-    imagen: '/productos/desinfectante-ambiental.jpg'
+    imagen: '/productos/aplicadores-bambú.jpg'
+  },
+  {
+    id: 'SKU-009',
+    codigo: '7503014279750',
+    descripcion: 'APLICADORES BOTE 50 PZ PALILLO BAMBÚ ALGODÓN BLANCO',
+    categoria: 'Higiene',
+    precio: 1650,
+    estado: 'activo',
+    fechaCreacion: '2024-01-01',
+    stock: 234,
+    imagen: '/productos/aplicadores-bote.jpg'
   },
   {
     id: 'SKU-010',
-    codigo: 'LOC-COR-250ML',
-    descripcion: 'Loción Corporal Nutritiva 250ml',
-    categoria: 'Cuidado Personal',
-    precio: 16500,
+    codigo: '7503014279712',
+    descripcion: 'APLICADORES BOTE 100 PZ PALILLO BAMBÚ ALGODÓN BLANCO',
+    categoria: 'Higiene',
+    precio: 1940,
+    estado: 'activo',
+    fechaCreacion: '2024-01-01',
+    stock: 156,
+    imagen: '/productos/aplicadores-100.jpg'
+  },
+  {
+    id: 'SKU-011',
+    codigo: '7502275701611',
+    descripcion: 'APLICADORES BOLSA ZIPLOC 150 PZ BAMBÚ ALGODÓN BLANCO',
+    categoria: 'Higiene',
+    precio: 2000,
+    estado: 'activo',
+    fechaCreacion: '2024-01-01',
+    stock: 89,
+    imagen: '/productos/aplicadores-ziploc.jpg'
+  },
+  {
+    id: 'SKU-012',
+    codigo: '7503014279736',
+    descripcion: 'APLICADORES MAQUILLAR 80 PZ PAPEL NEGRO ALGODÓN ROSA',
+    categoria: 'Belleza',
+    precio: 3500,
+    estado: 'activo',
+    fechaCreacion: '2024-01-01',
+    stock: 67,
+    imagen: '/productos/aplicadores-maquillaje.jpg'
+  },
+  {
+    id: 'SKU-013',
+    codigo: '7503014279743',
+    descripcion: 'APLICADORES SEGURIDAD BEBÉ 55 PZ BAMBÚ ALGODÓN BLANCO',
+    categoria: 'Bebé',
+    precio: 2810,
+    estado: 'activo',
+    fechaCreacion: '2024-01-01',
+    stock: 123,
+    imagen: '/productos/aplicadores-bebe.jpg'
+  },
+  {
+    id: 'SKU-014',
+    codigo: '7503014279699',
+    descripcion: 'ALMOHADILLAS FACIALES ALGODÓN ROUNDED COLORS 100 PZ',
+    categoria: 'Belleza',
+    precio: 3750,
+    estado: 'activo',
+    fechaCreacion: '2024-01-01',
+    stock: 78,
+    imagen: '/productos/almohadillas-colors.jpg'
+  },
+  {
+    id: 'SKU-015',
+    codigo: '7502275702113',
+    descripcion: 'ALMOHADILLAS FACIALES OVALADAS PREMIUM BLACK 80 PZ',
+    categoria: 'Belleza',
+    precio: 5200,
+    estado: 'activo',
+    fechaCreacion: '2024-01-01',
+    stock: 45,
+    imagen: '/productos/almohadillas-black.jpg'
+  },
+  
+  // ALFA MEDICAL - Productos Médicos
+  {
+    id: 'SKU-016',
+    codigo: '7502275700959',
+    descripcion: 'BOTIQUÍN CHICO',
+    categoria: 'Médico',
+    precio: 7000,
     estado: 'activo',
     fechaCreacion: '2024-01-01',
     stock: 34,
-    imagen: '/productos/locion-corporal.jpg'
+    imagen: '/productos/botiquin-chico.jpg'
+  },
+  {
+    id: 'SKU-017',
+    codigo: '7502275700966',
+    descripcion: 'BOTIQUÍN MEDIANO',
+    categoria: 'Médico',
+    precio: 9000,
+    estado: 'activo',
+    fechaCreacion: '2024-01-01',
+    stock: 23,
+    imagen: '/productos/botiquin-mediano.jpg'
+  },
+  {
+    id: 'SKU-018',
+    codigo: '7502275700973',
+    descripcion: 'BOTIQUÍN GRANDE',
+    categoria: 'Médico',
+    precio: 16000,
+    estado: 'activo',
+    fechaCreacion: '2024-01-01',
+    stock: 12,
+    imagen: '/productos/botiquin-grande.jpg'
+  },
+  {
+    id: 'SKU-019',
+    codigo: '7502275701222',
+    descripcion: 'ALCOHOL ETÍLICO DESNATURALIZADO 70º G.L. 125ml',
+    categoria: 'Médico',
+    precio: 1360,
+    estado: 'activo',
+    fechaCreacion: '2024-01-01',
+    stock: 267,
+    imagen: '/productos/alcohol-125ml.jpg'
+  },
+  {
+    id: 'SKU-020',
+    codigo: '7503014279224',
+    descripcion: 'ALCOHOL ETÍLICO DESNATURALIZADO 70º G.L. 250ml',
+    categoria: 'Médico',
+    precio: 2455,
+    estado: 'activo',
+    fechaCreacion: '2024-01-01',
+    stock: 189,
+    imagen: '/productos/alcohol-250ml.jpg'
+  },
+  {
+    id: 'SKU-021',
+    codigo: '7503014279231',
+    descripcion: 'ALCOHOL ETÍLICO DESNATURALIZADO 70º G.L. 500ml',
+    categoria: 'Médico',
+    precio: 4225,
+    estado: 'activo',
+    fechaCreacion: '2024-01-01',
+    stock: 145,
+    imagen: '/productos/alcohol-500ml.jpg'
+  },
+  {
+    id: 'SKU-022',
+    codigo: '7502275701499',
+    descripcion: 'ALCOHOL EN GEL A 70º GL 250ml',
+    categoria: 'Médico',
+    precio: 2915,
+    estado: 'activo',
+    fechaCreacion: '2024-01-01',
+    stock: 98,
+    imagen: '/productos/alcohol-gel.jpg'
+  },
+  {
+    id: 'SKU-023',
+    codigo: '7503014279361',
+    descripcion: 'VENDA ELÁSTICA 5 CM X 5 MT',
+    categoria: 'Médico',
+    precio: 730,
+    estado: 'activo',
+    fechaCreacion: '2024-01-01',
+    stock: 156,
+    imagen: '/productos/venda-5cm.jpg'
+  },
+  {
+    id: 'SKU-024',
+    codigo: '7503014279378',
+    descripcion: 'VENDA ELÁSTICA 10 CM X 5 MT',
+    categoria: 'Médico',
+    precio: 1190,
+    estado: 'activo',
+    fechaCreacion: '2024-01-01',
+    stock: 89,
+    imagen: '/productos/venda-10cm.jpg'
+  },
+  {
+    id: 'SKU-025',
+    codigo: '7503014279569',
+    descripcion: 'GASA ABSORBENTE ESTERILIZADA 7.5 X 5 CM (12 CAPAS) 10 PZ',
+    categoria: 'Médico',
+    precio: 2200,
+    estado: 'activo',
+    fechaCreacion: '2024-01-01',
+    stock: 67,
+    imagen: '/productos/gasa-esteril.jpg'
+  },
+  {
+    id: 'SKU-026',
+    codigo: '7503014279408',
+    descripcion: 'CINTA MICROPOROSA BLANCA 1.25 CM X 5 M',
+    categoria: 'Médico',
+    precio: 1555,
+    estado: 'inactivo',
+    fechaCreacion: '2024-01-01',
+    stock: 23,
+    imagen: '/productos/cinta-microporosa.jpg'
   }
 ]
 
@@ -179,6 +360,12 @@ export default function ProductosPage() {
 
   // Categorías únicas
   const categorias = [...new Set(productos.map(p => p.categoria))]
+
+  const handleLimpiarFiltros = () => {
+    setFiltroTexto('')
+    setFiltroCategoria('todas')
+    setFiltroEstado('todos')
+  }
 
   return (
     <MainLayout>
@@ -336,82 +523,135 @@ export default function ProductosPage() {
           </CardContent>
         </Card>
 
-        {/* Tabla de Productos */}
-        <Card>
-          <CardHeader>
-            <CardTitle className="text-lg">
-              Productos ({productosFiltrados.length})
-            </CardTitle>
-            <CardDescription>
-              Catálogo completo de productos y SKUs
-            </CardDescription>
-          </CardHeader>
-          <CardContent>
-            <div className="overflow-x-auto">
-              <Table>
-                <TableHeader>
-                  <TableRow>
-                    <TableHead>Código SKU</TableHead>
-                    <TableHead>Descripción</TableHead>
-                    <TableHead>Categoría</TableHead>
-                    <TableHead>Precio</TableHead>
-                    <TableHead>Stock</TableHead>
-                    <TableHead>Estado</TableHead>
-                    <TableHead>Valor Total</TableHead>
-                    <TableHead>Acciones</TableHead>
-                  </TableRow>
-                </TableHeader>
-                <TableBody>
-                  {productosFiltrados.map((producto) => (
-                    <TableRow key={producto.id} className="hover:bg-gray-50">
-                      <TableCell className="font-medium">{producto.codigo}</TableCell>
-                      <TableCell>
-                        <div className="max-w-xs">
-                          <p className="font-medium text-gray-900">{producto.descripcion}</p>
-                          <p className="text-sm text-gray-500">ID: {producto.id}</p>
-                        </div>
-                      </TableCell>
-                      <TableCell>
-                        <Badge variant="outline" className="bg-blue-50 text-blue-700 border-blue-200">
-                          {producto.categoria}
-                        </Badge>
-                      </TableCell>
-                      <TableCell className="font-medium">
-                        {formatearMoneda(producto.precio)}
-                      </TableCell>
-                      <TableCell>
-                        <div className="flex flex-col gap-1">
-                          <span className="font-medium">{producto.stock || 0} unidades</span>
-                          <Badge className={getStockBadge(producto.stock || 0)}>
-                            {getStockTexto(producto.stock || 0)}
-                          </Badge>
-                        </div>
-                      </TableCell>
-                      <TableCell>
-                        <Badge className={getEstadoBadge(producto.estado)}>
-                          {producto.estado.charAt(0).toUpperCase() + producto.estado.slice(1)}
-                        </Badge>
-                      </TableCell>
-                      <TableCell className="font-medium">
-                        {formatearMoneda(producto.precio * (producto.stock || 0))}
-                      </TableCell>
-                      <TableCell>
-                        <div className="flex space-x-2">
-                          <Button variant="ghost" size="sm">
-                            <Eye className="w-4 h-4" />
-                          </Button>
-                          <Button variant="ghost" size="sm">
-                            <Edit className="w-4 h-4" />
-                          </Button>
-                        </div>
-                      </TableCell>
-                    </TableRow>
-                  ))}
-                </TableBody>
-              </Table>
+        {/* Catálogo de Productos - Vista de Cards */}
+        <div className="space-y-4">
+          <div className="flex justify-between items-center">
+            <h2 className="text-xl font-semibold text-gray-900">
+              Catálogo de Productos ({productosFiltrados.length})
+            </h2>
+            <div className="flex gap-2">
+              <Button variant="outline" size="sm">
+                <Package className="w-4 h-4 mr-2" />
+                Vista Lista
+              </Button>
+              <Button variant="outline" size="sm" className="bg-blue-50 text-blue-600 border-blue-200">
+                <Package className="w-4 h-4 mr-2" />
+                Vista Cards
+              </Button>
             </div>
-          </CardContent>
-        </Card>
+          </div>
+
+          {/* Grid de Cards de Productos */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            {productosFiltrados.map((producto) => (
+              <Card key={producto.id} className="group hover:shadow-lg transition-all duration-300 border-0 shadow-md hover:shadow-xl">
+                <div className="relative overflow-hidden rounded-t-lg">
+                  {/* Imagen del producto */}
+                  <div className="aspect-square bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center relative">
+                    <Package className="w-16 h-16 text-gray-400" />
+                    
+                    {/* Badge de estado en la esquina superior derecha */}
+                    <div className="absolute top-3 right-3">
+                      <Badge className={getEstadoBadge(producto.estado)}>
+                        {producto.estado.charAt(0).toUpperCase() + producto.estado.slice(1)}
+                      </Badge>
+                    </div>
+
+                    {/* Badge de stock en la esquina superior izquierda */}
+                    <div className="absolute top-3 left-3">
+                      <Badge className={getStockBadge(producto.stock || 0)}>
+                        {getStockTexto(producto.stock || 0)}
+                      </Badge>
+                    </div>
+
+                    {/* Overlay con acciones al hacer hover */}
+                    <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-2">
+                      <Button size="sm" variant="secondary" className="bg-white/90 hover:bg-white">
+                        <Eye className="w-4 h-4" />
+                      </Button>
+                      <Button size="sm" variant="secondary" className="bg-white/90 hover:bg-white">
+                        <Edit className="w-4 h-4" />
+                      </Button>
+                      <Button size="sm" variant="secondary" className="bg-white/90 hover:bg-white">
+                        <Heart className="w-4 h-4" />
+                      </Button>
+                    </div>
+                  </div>
+                </div>
+
+                <CardContent className="p-4">
+                  {/* Categoría */}
+                  <Badge variant="outline" className="bg-blue-50 text-blue-700 border-blue-200 mb-2">
+                    {producto.categoria}
+                  </Badge>
+
+                  {/* Título del producto */}
+                  <h3 className="font-semibold text-gray-900 mb-2 line-clamp-2 min-h-[3rem]">
+                    {producto.descripcion}
+                  </h3>
+
+                  {/* Código SKU */}
+                  <p className="text-sm text-gray-500 mb-3 font-mono">
+                    SKU: {producto.codigo}
+                  </p>
+
+                  {/* Precio y stock */}
+                  <div className="flex justify-between items-center mb-4">
+                    <div>
+                      <p className="text-2xl font-bold text-gray-900">
+                        {formatearMoneda(producto.precio)}
+                      </p>
+                      <p className="text-sm text-gray-500">
+                        {producto.stock || 0} unidades
+                      </p>
+                    </div>
+                    <div className="text-right">
+                      <p className="text-sm text-gray-500">Valor Total</p>
+                      <p className="font-semibold text-gray-900">
+                        {formatearMoneda(producto.precio * (producto.stock || 0))}
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* Rating simulado */}
+                  <div className="flex items-center gap-1 mb-4">
+                    {[1, 2, 3, 4, 5].map((star) => (
+                      <Star 
+                        key={star} 
+                        className="w-4 h-4 fill-yellow-400 text-yellow-400" 
+                      />
+                    ))}
+                    <span className="text-sm text-gray-500 ml-1">(4.8)</span>
+                  </div>
+
+                  {/* Botón de acción */}
+                  <div className="flex justify-center">
+                    <Button variant="outline" size="sm" className="w-full">
+                      <Eye className="w-4 h-4 mr-2" />
+                      Ver Detalles
+                    </Button>
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+
+          {/* Mensaje cuando no hay productos */}
+          {productosFiltrados.length === 0 && (
+            <Card className="p-12 text-center">
+              <Package className="w-16 h-16 text-gray-400 mx-auto mb-4" />
+              <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                No se encontraron productos
+              </h3>
+              <p className="text-gray-500 mb-4">
+                Intenta ajustar los filtros o buscar con otros términos
+              </p>
+              <Button variant="outline" onClick={handleLimpiarFiltros}>
+                Limpiar Filtros
+              </Button>
+            </Card>
+          )}
+        </div>
       </div>
     </MainLayout>
   )
