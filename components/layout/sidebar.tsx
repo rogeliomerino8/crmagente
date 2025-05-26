@@ -30,6 +30,7 @@ import { cn } from "@/lib/utils";
 
 interface SidebarProps {
   className?: string;
+  onCollapseChange?: (isCollapsed: boolean) => void;
 }
 
 const menuItems = [
@@ -65,13 +66,15 @@ const menuItems = [
   }
 ];
 
-export const Sidebar: React.FC<SidebarProps> = ({ className }) => {
+export const Sidebar: React.FC<SidebarProps> = ({ className, onCollapseChange }) => {
   const [isCollapsed, setIsCollapsed] = useState(false);
   const [isMobileOpen, setIsMobileOpen] = useState(false);
   const pathname = usePathname();
 
   const handleToggleCollapse = () => {
-    setIsCollapsed(!isCollapsed);
+    const newCollapsedState = !isCollapsed;
+    setIsCollapsed(newCollapsedState);
+    onCollapseChange?.(newCollapsedState);
   };
 
   const handleMobileToggle = () => {
