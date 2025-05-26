@@ -15,7 +15,6 @@ import {
 } from "@/components/ui/dropdown-menu";
 import {
   Building2,
-  TrendingUp,
   ShoppingCart,
   Package,
   FileText,
@@ -45,12 +44,6 @@ const menuItems = [
     href: "/empresas",
     icon: Building2,
     description: "Gestión de clientes"
-  },
-  {
-    title: "Ventas",
-    href: "/ventas",
-    icon: TrendingUp,
-    description: "Historial de ventas"
   },
   {
     title: "Órdenes",

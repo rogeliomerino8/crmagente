@@ -31,7 +31,7 @@ export const AgenteChat: React.FC<AgenteChatProps> = ({ className }) => {
   const [mensajes, setMensajes] = useState<Mensaje[]>([
     {
       id: "1",
-      contenido: "¡Hola! Soy tu asistente de CRM. Puedo ayudarte a encontrar información sobre empresas, ventas, órdenes y productos. ¿En qué puedo asistirte hoy?",
+      contenido: "¡Hola! Soy tu asistente de CRM. Puedo ayudarte a encontrar información sobre empresas, órdenes de compra y productos. ¿En qué puedo asistirte hoy?",
       esUsuario: false,
       timestamp: new Date()
     }
@@ -71,22 +71,22 @@ export const AgenteChat: React.FC<AgenteChatProps> = ({ className }) => {
     const inputLower = input.toLowerCase();
     
     if (inputLower.includes("empresa") || inputLower.includes("cliente")) {
-      return "Puedo ayudarte con información de empresas. ¿Te interesa ver el listado completo, buscar una empresa específica, o revisar las estadísticas de ventas de algún cliente en particular?";
+      return "Puedo ayudarte con información de empresas. ¿Te interesa ver el listado completo, buscar una empresa específica, o revisar el historial de órdenes de algún cliente en particular?";
     }
     
-    if (inputLower.includes("venta") || inputLower.includes("ventas")) {
-      return "Para consultas de ventas, puedo mostrarte el historial por empresa, filtrar por fechas o canales de venta. ¿Qué período te interesa revisar?";
-    }
-    
-    if (inputLower.includes("orden") || inputLower.includes("pedido")) {
-      return "Puedo ayudarte a revisar órdenes de compra. ¿Quieres ver las órdenes pendientes, buscar por empresa específica, o revisar el estado de alguna orden en particular?";
+    if (inputLower.includes("orden") || inputLower.includes("pedido") || inputLower.includes("compra")) {
+      return "Puedo ayudarte a revisar órdenes de compra. ¿Quieres ver las órdenes pendientes, buscar por empresa específica, revisar el estado de alguna orden en particular, o filtrar por fechas?";
     }
     
     if (inputLower.includes("producto") || inputLower.includes("sku")) {
-      return "Para productos y SKUs, puedo mostrarte el catálogo completo, filtrar por categoría, o revisar el historial de ventas de productos específicos. ¿Qué necesitas consultar?";
+      return "Para productos y SKUs, puedo mostrarte el catálogo completo, filtrar por categoría, o revisar el historial de órdenes de productos específicos. ¿Qué necesitas consultar?";
     }
     
-    return "Entiendo tu consulta. Puedo ayudarte con información sobre empresas, ventas, órdenes de compra y productos. ¿Podrías ser más específico sobre qué información necesitas?";
+    if (inputLower.includes("política") || inputLower.includes("documento")) {
+      return "Puedo ayudarte con las políticas y documentación. ¿Necesitas revisar alguna política específica o buscar información en la documentación?";
+    }
+    
+    return "Entiendo tu consulta. Puedo ayudarte con información sobre empresas, órdenes de compra, productos y políticas. ¿Podrías ser más específico sobre qué información necesitas?";
   };
 
   const handleKeyPress = (e: React.KeyboardEvent) => {
@@ -244,7 +244,7 @@ export const AgenteChat: React.FC<AgenteChatProps> = ({ className }) => {
                 value={inputValue}
                 onChange={(e) => setInputValue(e.target.value)}
                 onKeyPress={handleKeyPress}
-                placeholder="Pregúntame sobre empresas, ventas, órdenes..."
+                placeholder="Pregúntame sobre empresas, órdenes, productos..."
                 className="flex-1 rounded-full border-gray-300 focus:border-blue-500 focus:ring-blue-500"
                 disabled={isTyping}
               />
